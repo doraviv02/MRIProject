@@ -8,7 +8,7 @@
 set -e
 cd "$(dirname "$0")/.."
 
-PY="${PY:-/Users/doraviv/miniconda3/bin/python3}"   # override with PY=... ; old MRI-Project-1 venv was deleted
+PY="${PY:-${CONDA_PREFIX:+$CONDA_PREFIX/bin/python3}}"; PY="${PY:-python3}"   # uses active conda env if any, else PATH python3
 export PYTHONPATH="$PWD"
 D=configs/data_m4raw.yaml
 N=configs/noise.yaml

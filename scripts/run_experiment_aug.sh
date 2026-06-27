@@ -9,7 +9,7 @@
 set -e
 cd "$(dirname "$0")/.."
 
-PY="${PY:-/Users/doraviv/miniconda3/bin/python3}"
+PY="${PY:-${CONDA_PREFIX:+$CONDA_PREFIX/bin/python3}}"; PY="${PY:-python3}"   # uses active conda env if any, else PATH python3
 export PYTHONPATH="$PWD"
 D=configs/data_m4raw.yaml; P=configs/policy.yaml; R=configs/recon_m4raw.yaml
 N_AUG=configs/noise_aug.yaml      # augmented noise — TRAINING only
