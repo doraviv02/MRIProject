@@ -1,0 +1,12 @@
+# M4Raw real low-field data configuration
+dataset: m4raw
+seed: 42
+
+m4raw:
+  root: /Users/doraviv/Documents/MRI Project 3/project_acq_allocation_lowfield/data/multicoil_val
+  contrast: T2w         # T1w | T2w | FLAIR
+  image_size: [256, 256]
+  max_reps: 3           # use up to 3 repetitions per scan
+  num_slices: 12        # use 12 middle slices of 18 total
+  train_frac: 0.70      # fraction of subjects for training
+  val_frac:   0.15      # fraction of subjects for validation

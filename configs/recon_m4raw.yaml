@@ -1,0 +1,15 @@
+# Reconstruction config for M4Raw 256x256 — larger model for MPS training
+num_unrolled_steps: 6
+dc_step_size: 0.1
+learn_dc_step: true
+precision_conditioning: true
+denoiser:
+  type: unet
+  in_channels: 3        # real, imag, rho
+  out_channels: 2
+  features: [32, 64, 128]
+  use_batchnorm: true
+loss:
+  l1_weight: 0.84
+  ssim_weight: 0.16
+  perceptual_weight: 0.0

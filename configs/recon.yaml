@@ -1,0 +1,15 @@
+# Reconstruction network configuration
+num_unrolled_steps: 6        # K unrolled DC+denoiser iterations
+dc_step_size: 0.1            # η for DC gradient step (learnable if learn_dc_step: true)
+learn_dc_step: true
+precision_conditioning: true # pass ρ as extra channel to denoiser
+denoiser:
+  type: unet                 # unet | dncnn
+  in_channels: 3             # real, imag, ρ (if precision_conditioning)
+  out_channels: 2            # real, imag
+  features: [32, 64, 128, 256]
+  use_batchnorm: true
+loss:
+  l1_weight: 0.84
+  ssim_weight: 0.16
+  perceptual_weight: 0.0     # 0 disables LPIPS in training loss

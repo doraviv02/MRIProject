@@ -1,0 +1,27 @@
+# Large model/checkpoint assets
+checkpoints/
+checkpoints_m4raw/
+checkpoints_m4raw_aug/
+checkpoints_m4raw_oldnoise_backup/
+
+# Large data files
+data/multicoil_val/
+*.h5
+*.pt
+*.npy
+*.zip
+*.pdf
+
+# Results/logs
+results/
+results_aug/
+*.log
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/

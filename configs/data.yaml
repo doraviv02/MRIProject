@@ -1,0 +1,33 @@
+# Data configuration
+dataset: synthetic           # Options: synthetic, m4raw, fastmri
+seed: 42
+
+synthetic:
+  image_size: [128, 128]     # H x W
+  num_train: 800
+  num_val: 100
+  num_test: 100
+  phantom_type: shepp_logan  # shepp_logan | circles | mixed
+
+m4raw:
+  root: data/m4raw           # path to downloaded M4Raw .h5 files (Zenodo 7523691)
+  contrast: T2w              # T1w | T2w | FLAIR
+  image_size: [256, 256]
+  max_reps: 3                # M4Raw provides 2-3 repetitions
+  train_frac: 0.70
+  val_frac:   0.15
+  test_frac:  0.15
+  coil_mode: rss             # rss (root-sum-of-squares) or single
+  center_crop: true
+
+fastmri:
+  root: data/fastmri         # path to fastMRI .h5 files
+  dataset: knee              # knee | brain
+  contrast: CORPDFS_FBK      # fastMRI challenge contrast key
+  image_size: [320, 320]
+  added_noise_sigma: 0.05    # additive noise sigma to simulate low-SNR from high-SNR data
+  rotate_k: 2                # fastMRI images come rotated; ×90° CCW to upright (2=180°)
+
+file_types:
+  m4raw: .h5                 # fastMRI-format HDF5 k-space
+  fastmri: .h5

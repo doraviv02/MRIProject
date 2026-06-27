@@ -1,0 +1,7 @@
+# Noise calibration configuration
+epsilon: 1.0e-6              # ε for numerical stability in w_m denominator
+sigma_profile: null          # path to precomputed σ_m profile .npy; null → recompute from data
+sigma_scale: 1.0             # global scale factor for σ_m (sweep for SNR experiments)
+background_roi_size: 10      # pixels in background corner for background-based σ estimation
+use_inter_rep_variance: true # use inter-repetition variance (preferred for M4Raw)
+save_profile: results/sigma_profile.npy

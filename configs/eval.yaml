@@ -1,0 +1,24 @@
+# Evaluation configuration
+checkpoint: null             # path to model checkpoint; null → freshly trained weights
+output_dir: results/
+
+metrics: [psnr, ssim, nmse, lpips]
+
+budget_sweep:
+  budgets: [0.25, 0.5, 0.75, 1.0, 1.5, 2.0]  # as fraction of N
+
+snr_sweep:
+  sigma_scales: [0.1, 0.25, 0.5, 1.0, 2.0, 4.0]
+  budget: 1.0
+
+qualitative:
+  num_examples: 4
+  save_error_maps: true
+
+stats:
+  test: wilcoxon             # paired Wilcoxon signed-rank
+  alpha: 0.05
+
+real_reps:
+  enabled: true
+  budget_factor: 2.0         # realizable budget ≤ max_reps * N

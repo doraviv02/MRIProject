@@ -1,0 +1,32 @@
+# Training configuration
+mode: codesign               # codesign | fixed_policy
+epochs: 50
+warmup_epochs: 5             # train recon under uniform allocation before unfreezing policy
+batch_size: 4
+num_workers: 4
+pin_memory: true
+
+optimizer:
+  type: adam
+  lr_recon: 1.0e-3
+  lr_policy: 1.0e-2          # slightly higher lr for policy logits
+  weight_decay: 1.0e-5
+  betas: [0.9, 0.999]
+
+scheduler:
+  type: cosine
+  min_lr: 1.0e-5
+
+grad_clip_norm: 1.0
+
+checkpoint_dir: checkpoints/
+save_every_n_epochs: 5
+resume: null                 # path to checkpoint to resume from
+
+wandb:
+  enabled: false
+  project: acq-allocation-lowfield
+  entity: null
+
+seed: 42
+device: cuda                 # cuda | cpu | mps

@@ -1,0 +1,15 @@
+# Acquisition policy configuration
+budget_factor: 1.0           # B = budget_factor * N  (1.0 = iso-time with full single-average)
+temperature_init: 1.0        # τ_0
+temperature_final: 0.1       # τ_final (annealed over training)
+temperature_anneal_epochs: 30
+entropy_reg_weight: 0.0      # β for entropy regulariser on softmax(a); 0 disables
+sparsity_reg_weight: 0.0     # L1 on softmax(a) (promote zero lines); mutually exclusive with entropy
+logit_init: zeros            # zeros | uniform_rand | center_biased
+
+# Real-reps inference settings
+max_reps_realizable: 3       # cap w_m for real-reps evaluation (M4Raw R)
+rounding_method: largest_remainder
+
+# LOUPE-style baseline settings (used in loupe_mask.py)
+loupe_slope: 5.0             # slope in sigmoid for Bernoulli relaxation

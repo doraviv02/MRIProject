@@ -1,0 +1,14 @@
+# Noise config for SNR-AUGMENTED training (E3 / low-SNR-claim test).
+# Same calibration as noise.yaml, plus per-batch log-uniform σ scaling so the model
+# learns to reconstruct across a range of SNRs instead of a single fixed level.
+epsilon: 1.0e-6
+sigma_profile: null          # uses the cached results/sigma_profile.npy base calibration
+sigma_scale: 1.0             # base scale; augmentation multiplies on top per batch
+background_roi_size: 10
+use_inter_rep_variance: true
+save_profile: results/sigma_profile.npy
+
+augment:
+  enabled: true              # turn on per-batch random σ scaling during training
+  scale_min: 0.25            # highest SNR seen in training (σ × 0.25)
+  scale_max: 4.0             # lowest SNR seen in training (σ × 4.0) — matches the E2 sweep range

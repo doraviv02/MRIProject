@@ -1,0 +1,15 @@
+# Fast recon config for experiments (smaller model, fewer steps)
+num_unrolled_steps: 4
+dc_step_size: 0.1
+learn_dc_step: true
+precision_conditioning: true
+denoiser:
+  type: unet
+  in_channels: 3
+  out_channels: 2
+  features: [16, 32, 64]
+  use_batchnorm: true
+loss:
+  l1_weight: 0.84
+  ssim_weight: 0.16
+  perceptual_weight: 0.0
